@@ -1,0 +1,43 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+      - main
+      - alpha
+      - development
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Create .npmrc For Package Registry Access
+        run: |
+          {
+             echo "@rsispal:registry=https://npm.pkg.github.com/rsispal"
+             echo "//npm.pkg.github.com/:_authToken=${{ secrets.GENERAL_UTILITY_LIBRARIES_PACKAGE_REGISTRY_ACCESS }}"
+           } >> .npmrc
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Tests
+        run: npm run test
+      - name: Build Package
+        run: npm run build
+      - name: Release Package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: "@rsispal-bot"
+          GIT_AUTHOR_EMAIL: "noreply@ravsispal.com"
+          GIT_COMMITTER_NAME: "@rsispal-bot"
+          GIT_COMMITTER_EMAIL: "noreply@ravsispal.com"
+        run: |
+          npx semantic-release

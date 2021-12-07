@@ -1,0 +1,38 @@
+{
+  "name": "@rsispal/crc",
+  "version": "0.0.1",
+  "description": "Extendable CRC calculation package. Offers common CRC-16 implementations with more to follow",
+  "homepage": "https://github.com/rsispal/crc#README",
+  "bugs": {
+    "url": "https://github.com/rsispal/crc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsispal/crc"
+  },
+  "license": "UNLICENSED",
+  "author": "Rav Sispal",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "test": "jest --config jest.config.js"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.2.0",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.4.12",
+    "jest": "^27.3.1",
+    "semantic-release": "^17.3.9",
+    "typescript": "^4.1.5"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
