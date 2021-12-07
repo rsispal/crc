@@ -1,6 +1,6 @@
 {
   "name": "@rsispal/crc",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Extendable CRC calculation package. Offers common CRC-16 implementations with more to follow",
   "homepage": "https://github.com/rsispal/crc#README",
   "bugs": {
